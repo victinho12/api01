@@ -2,14 +2,18 @@ const express = require("express");
 
 const app = express();
 
+const PORT = 3000;
+
+const cumprimentos_router = require("./rotas/japones");
+
 app.use(express.json());
+app.use("/japones",cumprimentos_router);
 
-const saudacoesRecurso = require("./recursos/saudacoes");
 
-app.use("/saudacoes",saudacoesRecurso)
+app.get('/',(req,res)=>{res.send("こんにちは")});
 
-const port = 3000;
 
-app.listen(port, ()=> {
-    console.log("api inicializada");
-})
+
+app.listen(PORT,()=>{console.log("Estou no ar , http://localhost:3000/japones")});
+
+
